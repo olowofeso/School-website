@@ -1,13 +1,13 @@
 
 TITLE: 
-Education - 100% Fully Responsive Free HTML5 Bootstrap Template
+SCHOOL WEBSITE GTA (Gifted and Talented Academy)
 
 AUTHOR:
-DESIGNED & DEVELOPED by FreeHTML5.co
+DESIGNED & DEVELOPED by Dexter_ife
 
-Website: http://freehtml5.co/
-Twitter: http://twitter.com/fh5co
-Facebook: http://facebook.com/fh5co
+Website: 
+Twitter: 
+Facebook: 
 
 
 CREDITS:
@@ -57,6 +57,4 @@ http://www.owlcarousel.owlgraphic.com/
 Magnific Popup
 http://dimsemenov.com/plugins/magnific-popup/
 
-Demo Images:
-http://unsplash.com
 
