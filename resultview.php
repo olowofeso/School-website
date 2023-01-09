@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	$email = $_SESSION['email'];
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -23,11 +28,13 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 
@@ -53,7 +60,8 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	<script src="https://kit.fontawesome.com/a2673cd345.js" crossorigin="anonymous"></script>
+	
 	</head>
 	<body>
 		
@@ -103,7 +111,7 @@
 
 							
 
-							<li class="btn-cta"><a href="login/login.html"><span>Login</span></a></li>
+							<li class="btn-cta"><a href="login/login.html"><span>Logout</span></a></li>
 							<li class="btn-cta"><a href="#"><span>Create a Course</span></a></li>
 						</ul>
 					</div>
@@ -113,89 +121,42 @@
 		</div>
 	</nav>
 </br>
-
 <div class="container">
     <div class="row header">
-      <h1>Admin Add USER &nbsp;</h1>
-      <h3>Fill out the form below for new student or staff</h3>
+      <h1>RESULT</h1>
     </div>
     <div class="row body">
-      <form action="connections/admin.php" method="post">
-        <ul>
-          	<p>
-              <label for="email">Email <span class="req">*</span></label>
-              <input type="email" name="email" placeholder="Gta@yahoo.com" required/>
-            </p>
-            <p class="left">
-              <label for="password1">Password</label>
-              <input type="password" name="password1" placeholder="password" required/>
-            </p>
-            <p class="left">
-                <label for="password2">Confirm Password</label>
-                <input type="password" name="password2" placeholder="password" required/>
-              </p>
-            <p class="left">
-              <label for="first_name">First name</label>
-              <input type="text" name="first_name" placeholder="John" required/>
-            </p>
-            <p class="left">
-              <label for="first_name">Other names</label>
-              <input type="text" name="other_names" placeholder="John" />
-            </p>
-            <p class="left">
-              <label for="last_name">Last name</label>
-              <input type="text" name="last_name" placeholder="Smith" required/>      
-            </p>
-              <p class="right">
-              <label for="last_name">Date of Birth</label>
-              <input type="date" name="date_of_birth" placeholder="09/05/2013" required/>      
-            </p>
-            <p class="left">
-              <label for="last_name">Nationality</label>
-              <input type="text" name="nationality" placeholder="Nigerian, Ghanian etc." required/>      
-            </p>
-            <p class="left">
-              <label for="last_name">City of birth</label>
-              <input type="text" name="city_of_birth" placeholder="FCT" required/>      
-            </p>
-			<p class="left">
-				<label for="student_class">Class</label>
-				<select name="class" id="student_class" required>
-					  <option value="creche">Creche</option>
-					  <option value="nur1">NURSERY 1</option>
-					  <option value="nur2">NURSERY 2</option>
-					  <option value="nur3">NURSERY 3</option>
-					  <option value="pri1">PRIMARY 1</option>
-					  <option value="pri2">PRIMARY 2</option>
-					  <option value="pri3">PRIMARY 3</option>
-					  <option value="pri4">PRIMARY 4</option>
-					  <option value="pri5">PRIMARY 5</option>
-					  <option value="pri6">PRIMARY 6</option>
-					  <option value="jss1">JUNIOR SECONDARY SCHOOL 1</option>
-					  <option value="jss2">JUNIOR SECONDARY SCHOOL 2</option>
-					  <option value="jss3">JUNIOR SECONDARY SCHOOL 3</option>
-					  <option value="ss1">SENIOR SECONDARY SCHOOL 1</option>
-					  <option value="ss2">SENIOR SECONDARY SCHOOL 2</option>
-					  <option value="ss3">SENIOR SECONDARY SCHOOL 3</option>
-				</select>      
-			  </p>
-            <p class="left">
-              <label for="gender">Gender</label>
-              <select name="gender" id="gender-select" required>
-                    <option value="male">MALE</option>
-                    <option value="female">FEMALE</option>
-                    <option value="Non-binart">NON-BINARY</option>
-              </select>      
-            </p>
-          
-            <label for="comments">comment on student</label></br>
-            <textarea cols="46" rows="4" name="comments" required></textarea>
-        
-        </br>
-            <input class="btn btn-primary" type="submit" value="Submit" name="submit"/>
-          
-        </ul>
-      </form>  
+		  <table class="table">
+			<thead>
+			  <tr>
+				<th scope="col">#</th>
+				<th scope="col">Full Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Action</th>
+			  </tr>
+			</thead>
+			<tbody>
+			<?php
+			include_once "connections/connection.php";
+
+            $sql = "SELECT * FROM userdata ORDER BY fullname"; //ORDER BY FULLNAME
+            $result = $conn -> query($sql);
+            $x = 0;
+            while ($row = mysqli_fetch_array($result)){
+                echo "<tr>
+                    <th scope='row'>".++$x."</th>
+                    <td>".$row['fullname']."</td>
+                    <td>".$row['email']."</td>
+                    <td><a href='uploads/".$email.".pdf'><input type='email' name='email' value='".$row['email']."' hidden disabled/>
+					<input class='btn btn-primary' type='submit' name='submit'value='VIEW'/></a></td>
+                </tr><br>";
+            }
+			?>
+			</tbody>
+		  </table>
+
+
+
     </div>
   </div>
 
@@ -271,6 +232,8 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 	
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -311,7 +274,11 @@
         day: d.getDate(),
         enableUtc: false
     });
-	</script>
+
+    </script>
 	</body>
 </html>
 
+<?php
+include_once "connections/disconnection.php";
+?>

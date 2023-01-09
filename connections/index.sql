@@ -1,0 +1,3 @@
+CREATE DATABASE `giftedandtalentedacademy`;
+CREATE TABLE `giftedandtalentedacademy`.`userdata` ( `userdataid` INT(15) UNSIGNED NOT NULL AUTO_INCREMENT , `email` VARCHAR(100) NOT NULL, `passwod` VARCHAR(255) NOT NULL , `fullname` VARCHAR(255) NOT NULL , `dateofbirth` DATE NOT NULL , `nationality` VARCHAR(255) NOT NULL , `cityofbirth` VARCHAR(255) NOT NULL , `class` VARCHAR(255) NOT NULL , `gender` VARCHAR(255) NOT NULL , `comment` TEXT NOT NULL , PRIMARY KEY (`userdataid`), UNIQUE KEY (`email`)) ENGINE = MyISAM;
+CREATE TABLE `giftedandtalentedacademy`.`result` ( `resultid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `reportsheet` VARCHAR(500) NOT NULL , `uploadDate` DATETIME on update CURRENT_TIMESTAMP NOT NULL , PRIMARY KEY (`resultid`)) ENGINE = MyISAM;

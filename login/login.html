@@ -38,14 +38,15 @@
               <p class="mb-4">
                 Welcome to Gifted and Talented Academy's Login in Page.
               </p>
-              <form action="#" method="post">
+              <form action="../connections/login.php" method="post">
                 <div class="form-group first">
-                  <label for="username">Username</label>
+                  <label for="username">Email</label>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
-                    placeholder="your-username"
-                    id="username"
+                    placeholder="Your Email"
+                    id="email"
+                    name="email"
                   />
                 </div>
                 <div class="form-group last mb-3">
@@ -55,6 +56,7 @@
                     class="form-control"
                     placeholder="Your Password"
                     id="password"
+                    name="password"
                   />
                 </div>
 
@@ -68,7 +70,7 @@
 
                     <span class="ml-auto"
                     ><a href="#" class="forgot-pass">Forgot Password</a></span><br><br>
-                    <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                    <input type="submit" value="Log In" name="submit" class="btn btn-block btn-primary">
                 </div>
               </form>
             </div>

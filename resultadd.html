@@ -118,25 +118,28 @@
 </br>
 <div class="container">
     <div class="row header">
-      <h3>Add Result</h3></br>
-      <h3>Add Student</h3></br>
+		<h3>Add Result</h3></br>
+		<h3>Add Student</h3></br>
     </div>
     <div class="row body">
-		
+
 		  <table class="table">
-			
+			 
 			<tbody>
 			  <tr>
-				<td><a href="admin.html"><button class="btn btn-primary">Register Student</button></a> <button class="btn btn-warning" type="submit"><label for="file">Update result</label><input type="file" id="file" name="filename" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/></button></td>
+				<td><a href="admin.html"><button class="btn btn-primary">Register Student</button></a> 
+					<button class="btn btn-warning" type="submit">
+					<label for="file">Update result</label>
+					<form action="connections/upload.php" method="post" enctype="multipart/form-data">
+						<input type="file" id="file" name="filename" accept=".pdf" onchange="this.form.submit();"/>
+					</form>
+					</button>
+				</td>
 			  </tr>
 			</tbody>
 		  </table>
-
-
-
     </div>
   </div>
-
 </br>
 	
 
@@ -254,4 +257,3 @@
 	</script>
 	</body>
 </html>
-
